@@ -1,26 +1,35 @@
-import { collection, onSnapshot } from 'firebase/firestore';
-import React, { useState } from 'react'
-import { db } from '../firebase';
+
+
+import { collection, getDocs } from 'firebase/firestore'
+import { useState } from 'react'
+
+import { auth, db } from '../firebase'
 
 const AllUsers = () => {
+///状態関数
+  const [test, setTest] = useState([]);
 
-  //ユーザーを状態管理
-  const [user, setUser] =useState(null);
-  //dbのユーザーを取得
-  const q = collection(db, "user");
-  
-  const unsubscribe = onSnapshot(q, (querySnapshot) => {
-    querySnapshot.forEach((doc) => {
-      setUser(doc.data());
-    });
-   
-  });
+  getDocs(collection(db, "user"))
+  .then(snapshot => {
+    setTest(snapshot.docs.map((doc) =>doc.data()
+    ))
+
+  })
+  .catch(err => {
+    console.log(err.message)
+})
 
 return (
+  <div className="msgs">
+  {test.map(({photoURL, displayName,uid }) => (
     <div>
-      {console.log(user)}
-      <span>ユーザーの名前</span>
+      <div>
+        <img src={photoURL} alt="" />
+        <p>{displayName}</p>
+      </div>
     </div>
+  ))}
+</div>
   )
 }
 
