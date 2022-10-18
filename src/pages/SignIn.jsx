@@ -23,14 +23,14 @@ const SignIn = () => {
   const a = auth.currentUser;
   ///もしログインしていればユーザー情報をcloud fireへ格納
    if (a) {
-  
+  //userコレクションに格納
    setDoc(doc(db, "user", a.uid), {
     uid: a.uid,
     email: a.email,
     displayName: a.displayName,
     photoURL: a.photoURL
   });
-
+   //userChatsに格納
   setDoc(doc(db, "userChats", a.uid), {
    
   });
