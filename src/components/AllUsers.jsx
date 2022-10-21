@@ -17,7 +17,7 @@ const AllUsers = () => {
     },[])
  
 //ユーザーをクリックすると
-const handleClick = async (u) => {
+const handleClick = async (user) => {
 //chatコレクション内にuser chats存在するか確認、もしなければ作成する
         const combineId =currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid
 //getDoc の返り値はPromise<DocumentSnapshot<T>>
