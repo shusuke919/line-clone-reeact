@@ -32,7 +32,13 @@ const SignIn = () => {
   });
    //userChatsに格納
   setDoc(doc(db, "userChats", a.uid), {
-   
+  });
+  //フレンド申請
+  setDoc(doc(db, "setFriendRequest", a.uid), {
+  });
+  setDoc(doc(db, "gotFriendRequest", a.uid), {
+  });
+  setDoc(doc(db, "friendList", a.uid), {
   });
   navigate("/");
 

@@ -3,9 +3,10 @@ import { auth, db } from '../firebase'
 import SignOut from '../components/SignOut'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { doc, setDoc } from "firebase/firestore"
-import Sidevar from '../components/Sidevar';
+import Sidevar from '../components/Sidebar';
 import Navbar from '../components/Navbar';
 import AllUsers from '../components/AllUsers';
+import Sidebar from '../components/Sidebar';
 
 const Line = () => {
 
@@ -28,8 +29,7 @@ const Line = () => {
     <div>
       ログインしてます
       <Navbar />
-      <AllUsers />
-      <Sidevar />
+      <Sidebar />
       <SignOut />
     </div>
   )
